@@ -21,4 +21,5 @@ Build/
 
 # macOS specific files
 .DS_Store
-
+App/Libraries/libiPhone-lib.a
+Packages/com.ptc.vuforia.engine-10.22.5.tgz
