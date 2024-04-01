@@ -1,0 +1,15 @@
+﻿<Properties StartupConfiguration="{3555BC79-8DB7-98F3-634C-7E57801F5097}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Aim/AimController.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Aim/AimController.cs" Line="104" Column="37" />
+      <File FileName="Assets/Scripts/RemovePositioner.cs" Line="9" Column="12" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="017552c1-1649-45f4-8dfa-f3cd32b64865" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
