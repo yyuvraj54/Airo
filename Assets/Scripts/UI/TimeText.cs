@@ -17,7 +17,7 @@ public class TimeText : MonoBehaviour
         // Update the time text
         if (timeText != null)
         {
-            timeText.text =  currentTime.ToString("HH:mm:ss");
+            timeText.text =  currentTime.ToString("HH:mm");
         }
 
         // Update the date text
