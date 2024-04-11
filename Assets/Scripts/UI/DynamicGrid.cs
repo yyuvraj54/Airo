@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class DynamicGrid : MonoBehaviour
 {
-   [SerializeField]
-    private int rows = 5;
-    [SerializeField]
-    private int cols =8;
-   [SerializeField]    
-   private float  tileSize = 1; 
+   [SerializeField] private int rows = 5;
+    [SerializeField] private int cols =8;
+   [SerializeField] private float  tileSize = 1; 
+    
+    [SerializeField] private GameObject imageViewPrefab;
    
     void Start()
     {
@@ -18,22 +17,24 @@ public class DynamicGrid : MonoBehaviour
 
   
     private void GenerateGrid(){
-         GameObject refrenceTile = (GameObject) Instantiate(Resources.Load("Prefabs/ImageView"));
+           GameObject referenceTile = Instantiate(imageViewPrefab);
         for(int i=0; i<rows; i++){
             for(int j=0; j<cols; j++){
-                GameObject tile = (GameObject)Instantiate(refrenceTile,transform);
-                float posX = cols * tileSize;
-                float posY = rows * -tileSize;
+                GameObject tile = Instantiate(referenceTile, transform);
+
+                float posX = j * tileSize; // Fixed calculation for X position
+                float posY = -i * tileSize; // Invert the row index for Y position
+
 
                 tile.transform.position = new Vector3(posX, posY, 0f);
                 Debug.Log("Created");
             }
         }
 
-        Destroy(refrenceTile);
-        float gridW = cols *tileSize;
-        float gridH = rows *tileSize;
-        transform.position = new Vector3(gridW/2+tileSize/2, gridH/2 -tileSize/2, 0f);
+        Destroy(referenceTile);
+        float gridW = 200;
+        float gridH = 200;
+        transform.position = new Vector3(gridW, gridH, 0f);
 
     }   
    

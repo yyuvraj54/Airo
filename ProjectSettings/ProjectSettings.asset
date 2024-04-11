@@ -162,6 +162,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.Falldev.Airo
+    Standalone: com.Falldev.Airo
     iPhone: com.Falldev.Airo
   buildNumber:
     Standalone: 0
