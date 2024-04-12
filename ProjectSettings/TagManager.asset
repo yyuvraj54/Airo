@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Click To Start
+  - appIcons
+  - Button
   layers:
   - Default
   - TransparentFX

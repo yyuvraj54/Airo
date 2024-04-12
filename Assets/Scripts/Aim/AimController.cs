@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(LineRenderer))]
@@ -92,9 +93,8 @@ public class AimController : MonoBehaviour
     void ApplyHoverEffect(GameObject obj)
     {
         string tag =obj.tag;
-        ShowText(obj,obj.name);   
-         
-        Onclicked(tag);
+        ShowText(tag,obj,obj.name);   
+        Onclicked(tag,obj,obj.name);
     }
 
     void RemoveHoverEffect()
@@ -123,7 +123,8 @@ public class AimController : MonoBehaviour
  
   
 
-    void Onclicked(string tag) {
+    void Onclicked(string tag,GameObject obj,string displayText) {
+        Debug.Log(tag);
          if (Input.touchCount > 0  || Input.GetKeyDown(KeyCode.E))
         // if (Input.GetKeyDown(KeyCode.E))
         {   
@@ -136,14 +137,14 @@ public class AimController : MonoBehaviour
             
 
                 // Debug.Log("Single touch detected at position: " + touch.position);
-                switch (tag)
-                {
+                switch (tag){
+                    case "appIcons":
+                        Debug.Log("Got a button");
+                        HandleButtonClick(obj);
+                        break;
                     case "Click To Start":
-                        // Open Gallery window
                         Debug.Log("Screen Action .......");
                         SceneManager.LoadScene("Desktop Screen");
-                        
-                        
                         break;
                     case "Calculator":
                         // Open Calculator window
@@ -163,9 +164,11 @@ public class AimController : MonoBehaviour
         }
     }
 
-    void ShowText(GameObject obj,string displayText)
+    void ShowText(string tag,GameObject obj,string displayText)
 
     {
+
+        if(tag == "appIcon"){
         // Vector3 currentPosotion=obj.transform.position;
         Bounds bounds = GetBounds(obj);
         
@@ -179,9 +182,10 @@ public class AimController : MonoBehaviour
         hoverTextInstance.gameObject.SetActive(true);
         
         if(lastHitObject !=null){
-                SmoothTransitionToTarget(lastHitObject);
+            SmoothTransitionToTarget(lastHitObject);
         }
             
+        }
     }
     Bounds GetBounds(GameObject obj)
     {
@@ -211,7 +215,7 @@ public class AimController : MonoBehaviour
     }
 
  
-   public void SmoothTransitionToTarget(GameObject currentObj)
+    public void SmoothTransitionToTarget(GameObject currentObj)
     {
         animator = currentObj.GetComponent<Animator>();
         if (currentObj != null)
@@ -234,7 +238,22 @@ public class AimController : MonoBehaviour
             
         }
     }
-
+    
+    private void HandleButtonClick(GameObject highlightedButton)
+    {
+        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        {
+            if (highlightedButton != null)
+            {
+                // Simulate button click using events
+                Button button = highlightedButton.GetComponent<Button>();
+                if (button != null)
+                {
+                    button.onClick.Invoke();
+                }
+            }
+        }
+    }
 }
 
 
